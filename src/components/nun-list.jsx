@@ -23,9 +23,9 @@ class NunsList extends Component {
     }
 
     nunsList() {
-        if (!this.state.nuns && this.state.nuns !== undefined) {
+        if (!this.state.nuns || this.state.nuns !== undefined) {
             return this.state.nuns.map(currentNun => {
-                return <Nun exercise={currentNun} key={currentNun._id}/>;
+                return <Nun nun={currentNun} key={currentNun._id}/>;
             });
         }
     }

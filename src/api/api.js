@@ -1,7 +1,7 @@
 import axios from "axios";
 import API from "./constants";
 
-export function getAllNuns() {
+export async function getAllNuns() {
   var nunsList = axios
     .get(API.ENDPOINT.NUNS.ALL)
     .then((response) => response.data)
