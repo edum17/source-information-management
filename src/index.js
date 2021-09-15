@@ -18,8 +18,11 @@ ReactDOM.render(
       <div className="container">
         <Navbar />
         <br />
-        <Route path="/" exact component={NunsList} />
-        <Route path="/edit/:id" component={NunEdit} />
+        <React.Fragment>
+          <Route path="/" exact>
+            <NunsList />
+          </Route>
+        </React.Fragment>
       </div>
     </Router>
   </React.StrictMode>,
