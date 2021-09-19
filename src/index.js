@@ -15,8 +15,8 @@ import NunEdit from "./components/nun-edit";
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <Navbar />
       <div className="container">
-        <Navbar />
         <br />
         <React.Fragment>
           <Route path="/" exact>

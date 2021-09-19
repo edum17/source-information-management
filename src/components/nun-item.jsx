@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class NunItem extends Component {
     constructor(props) {
@@ -7,27 +7,28 @@ class NunItem extends Component {
         this.state = {
             nun: this.props.nun
         }
-        this.handleOnEdit = this.handleOnEdit(this);
+        this.handleOnEdit = this.handleOnEdit.bind(this);
     }
 
-    handleOnEdit() {
-        this.props.onEdit && this.props.onEdit(this.state.nun);
+    handleOnEdit(e) {
+        console.log("handleOnEdit");
+        this.props.onEditNun && this.props.onEditNun();
     }
 
     render(){
-        return <tr>
-            <td>{this.state.nun.codigo}</td>
-            <td>{this.state.nun.nombre}</td>
-            <td>
-            <button onClick={this.handleOnEdit} >edit</button>
-            </td>
-        </tr>;
+        return (<tr>
+                <td>{this.state.nun.codigo}</td>
+                <td>{this.state.nun.nombre}</td>
+                <td>
+                    <button onClick={(e) => this.handleOnEdit(e)} >edit</button>
+                </td>
+            </tr>);
     }
 }
 
 NunItem.propTypes = {
     nun: PropTypes.object,
-    onEdit: PropTypes.func
+    onEditNun: PropTypes.func
 }
 
 export default NunItem;
