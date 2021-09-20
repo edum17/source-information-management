@@ -5,12 +5,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import "./styles/colors.scss";
-import "./styles/fonts.scss";
-
 import Navbar from "./components/navbar";
 import NunsList from "./components/nun-list";
-import NunEdit from "./components/nun-edit";
+
+import "../src/styles/style.scss";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import IconButton from './shared/icon-button';
 
 class NunItem extends Component {
     constructor(props) {
@@ -10,9 +11,8 @@ class NunItem extends Component {
         this.handleOnEdit = this.handleOnEdit.bind(this);
     }
 
-    handleOnEdit(e) {
-        console.log("handleOnEdit");
-        this.props.onEditNun && this.props.onEditNun();
+    handleOnEdit() {
+        this.props.onEditNun && this.props.onEditNun(this.state.nun);
     }
 
     render(){
@@ -20,7 +20,7 @@ class NunItem extends Component {
                 <td>{this.state.nun.codigo}</td>
                 <td>{this.state.nun.nombre}</td>
                 <td>
-                    <button onClick={(e) => this.handleOnEdit(e)} >edit</button>
+                    <IconButton onAction={this.handleOnEdit} icon={"AiTwotoneEdit"}/>
                 </td>
             </tr>);
     }

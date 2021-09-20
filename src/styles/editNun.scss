@@ -1,0 +1,31 @@
+.edit-nun {
+  &_content {
+    display: grid;
+    grid-gap: 10px;
+  }
+  &_header-buttons {
+    display: grid;
+    grid-template-columns: 30px 85% auto;
+    gap: 5px;
+  }
+  &_form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+    &-fields {
+      display: grid;
+      grid-template-rows: auto;
+    }
+    &-fields-distribution {
+      display: grid;
+      grid-template-rows: auto;
+      grid-gap: 10px;
+      margin-bottom: 15px;
+    }
+    &-fields-label {
+      color: $light-black;
+      font-size: $font-size-big;
+      font-weight: bold;
+    }
+  }
+}

@@ -19,9 +19,8 @@ class NunsList extends Component {
         getAllNuns().then((nuns) => {console.log("componentDidMount");this.setState({nuns: nuns})});
     }
 
-    handleChangeEdit() {
-        console.log("handleChangeEdit");
-        this.setState({showEditForm: !this.state.showEditForm});
+    handleChangeEdit(nun) {
+        this.setState({showEditForm: !this.state.showEditForm, nunSelected: nun});
     }
 
     render() {
@@ -32,10 +31,11 @@ class NunsList extends Component {
                         <tr>
                             <th>Codigo</th>
                             <th>Nombre</th>
+                            <th />
                         </tr>
                     </thead>
                     <tbody>
-                        { this.state.nuns.map(currentNun => {
+                        { this.state.nuns && this.state.nuns.map(currentNun => {
                             return <NunItem 
                                         nun={currentNun} 
                                         key={currentNun._id} 
@@ -45,7 +45,9 @@ class NunsList extends Component {
                     </tbody>
                 </table>
             </React.Fragment>) : (<React.Fragment>
-                <NunEdit nun={this.state.nunSelected}/>
+                <NunEdit 
+                    nun={this.state.nunSelected}
+                    onEditNun={this.handleChangeEdit}/>
             </React.Fragment>)}
         </div>
 
