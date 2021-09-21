@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BsArrowBarLeft } from "react-icons/bs";
+import { BsArrowBarLeft, BsTable, BsGrid3X3Gap } from "react-icons/bs";
 import {AiTwotoneEdit} from "react-icons/ai";
 
 function getIcon(icon) {
@@ -9,6 +9,10 @@ function getIcon(icon) {
             return <BsArrowBarLeft size={30} />;
         case 'AiTwotoneEdit':
             return <AiTwotoneEdit size={30} />;
+        case 'BsTable':
+            return <BsTable size={30} />;
+        case 'BsGrid3X3Gap':
+            return <BsGrid3X3Gap size={30} />;
     }
 }
 

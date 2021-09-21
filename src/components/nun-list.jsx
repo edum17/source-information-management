@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { getAllNuns } from "../api/api";
 import NunEdit from './nun-edit';
 import NunItem from "./nun-item";
+import IconButton from './shared/icon-button';
+import NunCard from './nun-card';
 
 class NunsList extends Component {
     constructor(props) {
@@ -10,9 +12,11 @@ class NunsList extends Component {
       this.state = {
           nuns: [], 
           showEditForm: false, 
-          nunSelected: null
+          nunSelected: null,
+          tableView: true,
         };
       this.handleChangeEdit = this.handleChangeEdit.bind(this);
+      this.handleViewInfo = this.handleViewInfo.bind(this);
     }
 
     componentDidMount() {
@@ -23,34 +27,45 @@ class NunsList extends Component {
         this.setState({showEditForm: !this.state.showEditForm, nunSelected: nun});
     }
 
+    handleViewInfo() {
+        this.setState({tableView: !this.state.tableView});
+    }
+    
     render() {
-        return <div> { !this.state.showEditForm ? (
-            <React.Fragment>
-                <table className="table">
-                    <thead className="thead-light">
-                        <tr>
-                            <th>Codigo</th>
-                            <th>Nombre</th>
-                            <th />
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.state.nuns && this.state.nuns.map(currentNun => {
-                            return <NunItem 
-                                        nun={currentNun} 
-                                        key={currentNun._id} 
-                                        onEditNun={this.handleChangeEdit}/>;
-                            }) 
-                        }
-                    </tbody>
-                </table>
-            </React.Fragment>) : (<React.Fragment>
+        return <React.Fragment> { !this.state.showEditForm ? (<React.Fragment> <div className="nun-list_header_buttton">{!this.state.tableView ? <IconButton onAction={this.handleViewInfo} icon={"BsTable"}/> : <IconButton onAction={this.handleViewInfo} icon={"BsGrid3X3Gap"}/>}</div>
+
+                    
+
+
+                <React.Fragment>    { this.state.tableView ? <table className="table">
+                        <thead className="thead-light">
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th />
+                            </tr>
+                        </thead>
+                        <tbody>
+                        { this.state.nuns && this.state.nuns.map((currentNun) => (<NunItem 
+                                    nun={currentNun} 
+                                    key={currentNun._id} 
+                                    onEditNun={this.handleChangeEdit}
+                                    tableView={this.state.tableView}/>))}
+                        </tbody>
+                    </table>
+                    
+                        
+                    :  <div className="nun-card_content">{this.state.nuns && this.state.nuns.map((currentNun) => ( <NunCard nun={currentNun} onAction={this.handleChangeEdit}/> ))}</div>}
+                    
+                </React.Fragment>
+                    
+                        
+    </React.Fragment>) : (<React.Fragment>
                 <NunEdit 
                     nun={this.state.nunSelected}
                     onEditNun={this.handleChangeEdit}/>
             </React.Fragment>)}
-        </div>
-
+        </React.Fragment>
     }
 }
 

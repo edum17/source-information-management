@@ -17,12 +17,12 @@ class NunItem extends Component {
 
     render(){
         return (<tr>
-                <td>{this.state.nun.codigo}</td>
-                <td>{this.state.nun.nombre}</td>
-                <td>
-                    <IconButton onAction={this.handleOnEdit} icon={"AiTwotoneEdit"}/>
-                </td>
-            </tr>);
+                    <td>{this.state.nun.codigo}</td>
+                    <td>{this.state.nun.nombre}</td>
+                    <td>
+                        <IconButton onAction={this.handleOnEdit} icon={"AiTwotoneEdit"}/>
+                    </td>
+                </tr>);
     }
 }
 
