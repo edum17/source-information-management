@@ -16,12 +16,10 @@ class NunItem extends Component {
     }
 
     render(){
-        return (<tr>
+        return (<tr className="nun-list_row" onClick={this.handleOnEdit}>
                     <td>{this.state.nun.codigo}</td>
                     <td>{this.state.nun.nombre}</td>
-                    <td>
-                        <IconButton onAction={this.handleOnEdit} icon={"AiTwotoneEdit"}/>
-                    </td>
+                    <td>{this.state.nun.siglo}</td>
                 </tr>);
     }
 }

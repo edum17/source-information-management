@@ -40,9 +40,9 @@ class NunsList extends Component {
                 <React.Fragment>    { this.state.tableView ? <table className="table">
                         <thead className="thead-light">
                             <tr>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                 <th>Nombre</th>
-                                <th />
+                                <th>Siglo</th>
                             </tr>
                         </thead>
                         <tbody>

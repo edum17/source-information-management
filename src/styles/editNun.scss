@@ -10,7 +10,7 @@
   }
   &_form {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     grid-gap: 15px;
     &-fields {
       display: grid;
@@ -26,6 +26,16 @@
       color: $light-black;
       font-size: $font-size-big;
       font-weight: bold;
+    }
+    &-buttons {
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: auto;
+      grid-gap: 15px;
+      justify-content: center;
+      &-width {
+        width: 100px;
+      }
     }
   }
 }
