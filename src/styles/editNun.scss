@@ -7,6 +7,10 @@
     display: grid;
     grid-template-columns: 30px 85% auto;
     gap: 5px;
+    &-actions {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+    }
   }
   &_form {
     display: grid;
