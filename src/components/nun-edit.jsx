@@ -4,6 +4,23 @@ import IconButton from "./shared/icon-button";
 import CarouselImages from "./carousel-images";
 import Button from "react-bootstrap/Button";
 import { updateNun } from "../api/api";
+import { Document, Packer } from "docx";
+import { saveAs } from "file-saver";
+
+function saveDocumentToFile(doc, fileName) {
+  const packer = new Packer();
+  const mimeType =
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  packer.toBlob(doc).then((blob) => {
+    const docblob = blob.slice(0, blob.size, mimeType);
+    saveAs(docblob, fileName);
+  });
+}
+
+function generateWordDocument() {
+  let doc = new Document();
+  saveDocumentToFile(doc, "New Document.docx");
+}
 
 class NunEdit extends Component {
   constructor(props) {
@@ -38,7 +55,6 @@ class NunEdit extends Component {
     this.onBibliografiaChange = this.onBibliografiaChange.bind(this);
     this.onImagenesChange = this.onImagenesChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
-    this.handleExportData = this.handleExportData(this);
   }
 
   handleEditFields() {
@@ -192,10 +208,6 @@ class NunEdit extends Component {
     console.log("handleCancel");
   }
 
-  handleExportData(element, filename = "registro_nun") {
-    console.log("Export");
-  }
-
   render() {
     return (
       <div className="edit-nun_content">
@@ -207,7 +219,7 @@ class NunEdit extends Component {
               onAction={this.handleEditFields}
               icon={"AiTwotoneEdit"}
             />
-            <IconButton onAction={this.handleExportData} icon="BsDownload" />
+            <IconButton onAction={generateWordDocument} icon="BsDownload" />
           </div>
         </div>
         <div className="edit-nun_form">
